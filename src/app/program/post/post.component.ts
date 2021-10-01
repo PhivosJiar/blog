@@ -24,6 +24,7 @@ export class PostComponent implements OnInit {
   isedit: boolean = false;
   title_display: boolean[] = [];
   message_display: boolean[] = [];
+  comment_display: boolean[] = [];
   titleisedit: boolean = false;
   messageisedit: boolean = false;
   edittitle: string = '';
@@ -32,6 +33,10 @@ export class PostComponent implements OnInit {
   userName: any;
   data: any;
   like: boolean = false;
+  isEditComment:any =  false;
+  commentMessage: string = ''
+  
+  commentList:string[] = [];
   constructor() { }
 
   ngOnInit(): void {
@@ -43,10 +48,27 @@ export class PostComponent implements OnInit {
     let query = new Parse.Query(PostList);
     await query.find().then((result: any) => {
       this.postlist = result;
-      this.postlist.map(async(i: any) => {
-        let commentList :any[] = [];
-        commentList.push(await i.relation('comment').query().find())
-        i.set('commentIm',commentList);
+      this.postlist.map(async (i: any) => {
+        let commentList: any[] = [];
+        let commentIM = i.relation('comment').query();
+        await commentIM.find().then((res: any) => {
+          if (res != undefined) {
+              res.forEach( (el:any) => {
+                  this.commentList.push(el.attributes.message)
+              });
+          }
+        });
+        i.set('commentMessage',this.commentList);
+        console.log(this.commentList)
+        this.commentList=[];
+        commentIM = i.relation('comment').query();
+        commentIM.equalTo('user', this.userName)
+        commentIM.first().then((result: any) => {
+          if (result != undefined) {
+              i.set('commentLike',result.attributes.like);
+          }
+        });
+        i.set('commentIm', commentList);
         if (i.get('writer')) {
           i.set('onwer', i.get('writer').attributes.username);
         }
@@ -126,14 +148,12 @@ export class PostComponent implements OnInit {
   }
 
   async setlike(item: any) {
-    this.like = !this.like;
     let postId = await this.checkCommetHaveThisPost(item)
     let comment = new Comment();
     if (postId == '') {
       comment.set('like', true);
       comment.set('user', this.userName);
       comment.set('post', item);
-      console.log(item);
       await comment.save();
     } else {
       let comment_list = new Parse.Query(Comment);
@@ -145,6 +165,8 @@ export class PostComponent implements OnInit {
     let postList_relation = postList.relation('comment');
     postList_relation.add(comment);
     postList.save();
+
+    this.find();
   }
 
   async checkCommetHaveThisPost(item: any) {
@@ -158,5 +180,33 @@ export class PostComponent implements OnInit {
       }
     })
     return result_postId;
+  }
+
+  addComment(item:any,index:number){
+    this.isEditComment = !this.isEditComment; 
+    this.comment_display[index] = true;
+  }
+
+  async sendComment(item:any,index:number){
+    let comment = new Comment();
+    comment.set('message',this.commentMessage)
+    comment.set('user', this.userName);
+    comment.set('post', item);
+    await comment.save().then(()=>{
+      this.commentMessage='';
+      this.isEditComment = false; 
+      this.comment_display[index] = false;
+    });
+    let postList = await query.get(comment.get('post').id);
+    let postList_relation = postList.relation('comment');
+    postList_relation.add(comment);
+    await postList.save();
+
+    this.find();
+  }
+
+  cancel(index:number){
+    this.isEditComment = false; 
+    this.comment_display[index] = false;
   }
 }

@@ -1,9 +1,9 @@
 <div class="Rectangle-Copy-2">
     <div>
         <div class="title">
-            <span class="s_title"> <span>所有貼文</span> 
-            <!-- | <span>我的貼文</span> -->
-        </span>
+            <span class="s_title"> <span>所有貼文</span>
+                <!-- | <span>我的貼文</span> -->
+            </span>
         </div>
     </div>
     <div class="Rectangle-Copy-3">
@@ -35,17 +35,25 @@
                         <input class="list_message" [(ngModel)]="editmessage"
                             *ngIf="message_display[i] && messageisedit" (keyup.enter)="update(item,i)"
                             (focusout)="update(item,i)">
-                        <div class="list_message" *ngIf="!message_display[i]"
-                            (click)="edit(item,i,'message')">{{item.attributes.message }}</div>
+                        <div class="list_message" *ngIf="!message_display[i]" (click)="edit(item,i,'message')">
+                            {{item.attributes.message }}</div>
                     </div>
                     <div class="Path-Copy-2"> </div>
                     <div class="comment">
-                        <mat-icon class="comment_icon thumb_up" (click)="setlike(item)"  *ngIf="like">thumb_up_off_alt</mat-icon>
-                        <mat-icon class="comment_icon thumb_up" (click)="setlike(item)"  *ngIf="!like">thumb_up</mat-icon>
-                        <mat-icon class="comment_icon chat_bubble" (click)="edit(item,i)">chat_bubble_outline</mat-icon>
-                        
-                    </div>
+                        <mat-icon class="comment_icon thumb_up" (click)="setlike(item)"
+                            *ngIf="!item.attributes.commentLike">thumb_up_off_alt</mat-icon>
+                        <mat-icon class="comment_icon thumb_up" (click)="setlike(item)"
+                            *ngIf="item.attributes.commentLike">thumb_up</mat-icon>
+                        <mat-icon class="comment_icon chat_bubble" (click)="addComment(item,i)">chat_bubble_outline
+                        </mat-icon>
 
+
+                    </div>
+                    <input class="comment_message" [(ngModel)]="commentMessage"
+                        *ngIf="comment_display[i] && isEditComment" (keyup.enter)="sendComment(item,i)"
+                        (focusout)="cancel(i)">
+                    <div class="comment_tree" *ngFor="let element of item.attributes.commentMessage;index as i;">
+                        {{element}}
                 </div>
             </div>
         </div>

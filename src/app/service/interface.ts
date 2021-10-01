@@ -10,5 +10,7 @@ export interface Postlist {
     user?: string;
     writer?: string;
     onwer?:string;
+    commentLike?:boolean;
+    commentMessage?:string[];
   }
 }
