@@ -2,8 +2,15 @@
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { serverURL } from "parse";
+
 export const environment = {
-  production: false
+  production: false,
+  name:'debug',
+  parse: {
+    appId:"EamJQt5W2aw1sg5ZBfdpQcXTbJWjdJv8iIMDgxms",
+    serverURL:'https://test.mabow.com.tw/parse'
+  }
 };
 
 /*

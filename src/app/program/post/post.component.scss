@@ -1,0 +1,167 @@
+.Rectangle-Copy-2 {
+    flex-direction:column;
+    background-color: #f8f9fb;
+    height: 100vh;
+    width: 92vw;
+    display: flex;
+} 
+.Rectangle-Copy-3{
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction:column;
+}
+.title{
+    display: flex;
+    justify-content: center;
+    width: auto;
+    height: 2vw;
+}
+
+.s_title{
+    width: auto;
+    height: auto;
+    font-family: PingFangTC;
+    font-size: 24px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: center;
+    color: #00c391;
+    position: absolute;
+}
+
+.post{
+    display: flex;
+    justify-content: center;
+    width: auto;
+    height: 12vh;
+    margin-top: 1vh;
+}
+.chatbox{
+    width: 20vw;
+    border-style:solid;
+    border-width:1px;
+    border-radius: 8px;
+    border-color: #b4b4b4;
+    height: 10vh;
+}
+.post_title{
+    width: 19vw;
+    height: auto;
+    border-style:none;
+    background-color: #f8f9fb;
+    margin: 2px;
+}
+.post_title:focus{
+    outline:none;
+}
+.post_message{
+    width: 19vw;
+    height: 7vh;
+    border-style:none;
+    background-color: #f8f9fb;
+    word-break:break-all;
+    margin: 2px;
+}
+.post_message:focus{
+    outline:none;
+}
+.sendbtn{
+    float: right;
+    width: 50px;
+    height: 20px;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.33;
+    letter-spacing: normal;
+    text-align: center;
+    color: #00c391;
+}
+
+.list{
+    width: 40vw;
+    height: 320px;
+    margin: 12px 0 27.5px;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+}
+
+.postlist{
+    display: flex;
+    flex-direction:column;
+    width: auto;
+    height: auto;
+}
+
+.Path-Copy-2 {
+    width: 40vw;
+    height: 1px;
+    margin: 12px 0 15px 0;
+    background-color: #d8d8d8;
+    border: solid 1px #d8d8d8;
+}
+
+.list_title{
+    border-style:none;
+    width: 36vw;
+    height: 36px;
+    margin: 0 0 12px 20px;
+    font-family: PingFangTC;
+    font-size: 24px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: var(#323232);
+}
+.list_title:focus{
+    outline:none;
+}
+.list_message{
+    border-style:none;
+    width: 36vw;
+    height: 64px;
+    margin: 15px 46px 8px 20px;
+    font-family: PingFangTC;
+    font-size: 20px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    color: var(#323232);  
+}
+.list_message:focus{
+    outline:none;
+}
+.icon{
+    float: right;
+}
+
+.delete_icon{
+    color: red;
+}
+
+.edit_icon{
+    color: #00c391;
+}
+.onwer{
+    border-style:none;
+    width: 36vw;
+    height: 36px;
+    margin: 0 0 12px 20px;
+    font-family: PingFangTC;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color:#00c391;
+}

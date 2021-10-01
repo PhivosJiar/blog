@@ -1,0 +1,19 @@
+<div class="title">
+<img class="logo" src="../../../assets/image/logo-teacher-02@3x.png">
+</div>
+<div class="body">
+    <div class="form">
+        <span class="login_text">登入</span>
+
+        <div class="Rectangle" >
+        <input class="Rectangle-Copy" [(ngModel)]="account">
+        </div>
+
+        <div class="Rectangle">
+        <input class="Rectangle-Copy" [(ngModel)]="password">
+        </div>
+     
+        <button class="submit" (click)="login()"><span class="login">登入</span></button>
+        <p class="signup" routerLink="/signup"> 註冊 </p>
+    </div>
+</div>

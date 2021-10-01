@@ -1,0 +1,110 @@
+.logo{
+    width: 21vw;
+    height: 10.5vh;
+    margin: 2.3vh 7.3vw 0 2.1vw;
+    object-fit: contain;
+}
+
+.login_text{
+    width: 38.7vw;
+    height: 9.6vh;
+    font-family: NotoSansCJKtc;
+    font-size: 36px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: var(#323232);
+}
+.Rectangle {
+    width: 38.7vw;
+    height: 9.6vh;
+    margin: 14px 0 49px 0;
+    border: none ;
+    background-color: #fff;
+}
+.Rectangle-Copy {
+    text-indent : 2em;
+    width: 38.7vw;
+    height: 9.6vh;
+    border-radius: 8px;
+    border: solid 1px #d8d8d8;
+    background-color: #fff;
+    font-family: NotoSansCJKtc;
+    font-size: 28px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: var(#323232);
+}
+
+.Rectangle-Copy:focus {
+    text-indent : 2em;
+    outline:none;
+    width: 38.7vw;
+    height: 9.6vh;
+    border-radius: 8px;
+    box-shadow: 0 0 0 4px rgba(0, 196, 144, 0.3);
+    border: solid 1px #00c490;
+    background-color: #fff;
+    font-family: NotoSansCJKtc;
+    font-size: 28px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: var(#323232);
+}
+.submit{
+    width: 38.7vw;
+    height: 9.6vh;
+    margin: 14px 0 49px 0;
+    border-radius: 8px;
+    background-color:#00c391;
+    border: none ;
+}
+.submit:hover{
+    background-color:#00b391;
+}
+.body{
+    display: flex;
+    justify-content: center;
+}
+
+.form{
+    display: flex;
+    flex-direction:column;
+}
+
+.login{
+    width: 56px;
+    height: 41px;
+    font-family: NotoSansCJKtc;
+    font-size: 28px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #fff;
+}
+
+.signup{
+        width: 56px;
+        height: 41px;
+        font-family: NotoSansCJKtc;
+        font-size: 28px;
+        font-weight: bold;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        text-align: center;
+        color: #00c390;
+}

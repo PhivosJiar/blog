@@ -1,0 +1,41 @@
+<div class="Rectangle-Copy-2">
+    <div>
+        <div class="title">
+            <span class="s_title">所有貼文</span>
+        </div>
+    </div>
+    <div class="Rectangle-Copy-3">
+        <div class="post">
+            <div class="chatbox">
+                <input type="text" class="post_title" placeholder="標題" [(ngModel)]="title">
+                <textarea rows="5" class="post_message" placeholder="內文" [(ngModel)]="message"></textarea>
+                <button class="sendbtn" (click)="post()">送出</button>
+            </div>
+        </div>
+        <div class="post">
+            <div class="postlist">
+                <div class="list" *ngFor="let item of postlist;index as i;">
+                    <div class="onwer">{{item.attributes.onwer }} <br>
+                    {{item.createdAt | date:'MM月dd日 hh:mm' }}
+                    </div>
+                    <input class="list_title" [(ngModel)]="edittitle" *ngIf="title_display[i]  && titleisedit "
+                        (keyup.enter)="update(item,i)" (focusout)="update(item,i)">
+                    <span class="list_title" *ngIf="!title_display[i]"
+                        (click)="edit(item,i,'title')">{{item.attributes.title }} </span>
+
+                    <span class="icon" *ngIf="!title_display[i] && item.attributes.user == this.currentUser.id">
+                        <mat-icon class="edit_icon" (click)="edit(item,i)">edit</mat-icon>
+                        <mat-icon class="delete_icon" (click)="delete(item)">delete</mat-icon>
+
+                    </span>
+                    <div class="Path-Copy-2"> </div>
+                    <input class="list_message" [(ngModel)]="editmessage" *ngIf="message_display[i] && messageisedit"
+                        (keyup.enter)="update(item,i)" (focusout)="update(item,i)">
+                    <span class="list_message" *ngIf="!message_display[i]"
+                        (click)="edit(item,i,'message')">{{item.attributes.message }}</span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

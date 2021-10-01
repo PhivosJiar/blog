@@ -1,0 +1,45 @@
+
+<div class="main">
+<div class="nav-bar">
+    <img class="Group-3" src='../../../assets/image/group-3@3x.png' />
+    <div class="nb-line-5"></div>
+
+    <div class="item-focus" routerLink="/home/post" >
+        <mat-icon class="ic_main_f">home</mat-icon>
+        <!-- <img class="ic_main_f" src='../../../assets/image/ic-main-f@3x.png' /> -->
+        <br>
+        <span class="tag-focus">主頁</span>
+    </div>
+
+    <div class="item" routerLink="/home/infomation">
+        <mat-icon class="ic_main">person</mat-icon>
+        <!-- <img class="ic_main_f" src='../../../assets/image/ic-info-n@3x.png' /> -->
+        <br>
+        <span class="tag">資訊</span>
+    </div>
+
+    <div class="item">
+        <img class="ic_main" src='../../../assets/image/ic-message-n@3x.png' />
+        <br>
+        <span class="tag">日誌</span>
+    </div>
+
+    <div class="item">
+        <img class="ic_main" src='../../../assets/image/ic-opclass-n@3x.png' />
+        <br>
+        <span class="tag">紀錄</span>
+    </div>
+
+    <div class="item" (click)="logout()">
+        <mat-icon class="ic_main">logout</mat-icon>
+        <!-- <img class="ic_main" src='../../../assets/image/ic-opclass-n@3x.png' /> -->
+        <br>
+        <span class="tag" >登出</span>
+    </div>
+</div>
+
+
+<div class="outlet">
+    <router-outlet></router-outlet>
+  </div>
+</div>
