@@ -1,7 +1,9 @@
 <div class="Rectangle-Copy-2">
     <div>
         <div class="title">
-            <span class="s_title">所有貼文</span>
+            <span class="s_title"> <span>所有貼文</span> 
+            <!-- | <span>我的貼文</span> -->
+        </span>
         </div>
     </div>
     <div class="Rectangle-Copy-3">
@@ -15,24 +17,34 @@
         <div class="post">
             <div class="postlist">
                 <div class="list" *ngFor="let item of postlist;index as i;">
-                    <div class="onwer">{{item.attributes.onwer }} <br>
-                    {{item.createdAt | date:'MM月dd日 hh:mm' }}
+                    <div class="onwer">{{item.attributes.onwer }}  <br>
+                        {{item.createdAt | date:'MM月dd日 hh:mm' }}
                     </div>
                     <input class="list_title" [(ngModel)]="edittitle" *ngIf="title_display[i]  && titleisedit "
                         (keyup.enter)="update(item,i)" (focusout)="update(item,i)">
                     <span class="list_title" *ngIf="!title_display[i]"
                         (click)="edit(item,i,'title')">{{item.attributes.title }} </span>
 
+
                     <span class="icon" *ngIf="!title_display[i] && item.attributes.user == this.currentUser.id">
                         <mat-icon class="edit_icon" (click)="edit(item,i)">edit</mat-icon>
                         <mat-icon class="delete_icon" (click)="delete(item)">delete</mat-icon>
-
                     </span>
+                    <div>
+
+                        <input class="list_message" [(ngModel)]="editmessage"
+                            *ngIf="message_display[i] && messageisedit" (keyup.enter)="update(item,i)"
+                            (focusout)="update(item,i)">
+                        <div class="list_message" *ngIf="!message_display[i]"
+                            (click)="edit(item,i,'message')">{{item.attributes.message }}</div>
+                    </div>
                     <div class="Path-Copy-2"> </div>
-                    <input class="list_message" [(ngModel)]="editmessage" *ngIf="message_display[i] && messageisedit"
-                        (keyup.enter)="update(item,i)" (focusout)="update(item,i)">
-                    <span class="list_message" *ngIf="!message_display[i]"
-                        (click)="edit(item,i,'message')">{{item.attributes.message }}</span>
+                    <div class="comment">
+                        <mat-icon class="comment_icon thumb_up" (click)="setlike(item)"  *ngIf="like">thumb_up_off_alt</mat-icon>
+                        <mat-icon class="comment_icon thumb_up" (click)="setlike(item)"  *ngIf="!like">thumb_up</mat-icon>
+                        <mat-icon class="comment_icon chat_bubble" (click)="edit(item,i)">chat_bubble_outline</mat-icon>
+                        
+                    </div>
 
                 </div>
             </div>

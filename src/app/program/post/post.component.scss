@@ -126,7 +126,7 @@
 .list_message{
     border-style:none;
     width: 36vw;
-    height: 64px;
+    // height: 200px;
     margin: 15px 46px 8px 20px;
     font-family: PingFangTC;
     font-size: 20px;
@@ -164,4 +164,24 @@
     line-height: normal;
     letter-spacing: normal;
     color:#00c391;
+}
+
+.comment{
+    // background-color: black;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    
+    align-content: center;
+}
+.comment_icon{
+    text-align: center;
+    flex-grow:1;
+}
+.thumb_up{
+    color: #b4b4b4;
+}
+
+.chat_bubble{
+    color: #b4b4b4;
 }

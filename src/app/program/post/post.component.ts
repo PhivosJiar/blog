@@ -5,6 +5,7 @@ import { Postlist } from 'src/app/service/interface';
 const Parse = require('parse');
 
 const PostList = Parse.Object.extend("example7");
+const Comment = Parse.Object.extend("example8");
 const query = new Parse.Query(PostList);
 const User = Parse.Object.extend("User");
 
@@ -28,8 +29,9 @@ export class PostComponent implements OnInit {
   edittitle: string = '';
   editmessage: string = '';
   currentUser = Parse.User.current();
-  writer: any;
+  userName: any;
   data: any;
+  like: boolean = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -39,13 +41,14 @@ export class PostComponent implements OnInit {
 
   async find() {
     let query = new Parse.Query(PostList);
-    // query.include('writer');
     await query.find().then((result: any) => {
       this.postlist = result;
-      this.postlist.map((i: any) => {
-        if(i.get('writer')){
-        i.set("onwer",i.get('writer').attributes.username)
-        console.log(i)
+      this.postlist.map(async(i: any) => {
+        let commentList :any[] = [];
+        commentList.push(await i.relation('comment').query().find())
+        i.set('commentIm',commentList);
+        if (i.get('writer')) {
+          i.set('onwer', i.get('writer').attributes.username);
         }
       })
     }, (error: any) => {
@@ -61,7 +64,7 @@ export class PostComponent implements OnInit {
       postList.set("message", this.message);
       postList.set("user", this.currentUser.id);
 
-      postList.set("writer", this.writer);
+      postList.set("writer", this.userName);
       await postList.save().then(() => {
         this.title = '';
         this.message = '';
@@ -70,13 +73,13 @@ export class PostComponent implements OnInit {
     }
   }
 
+  //抓取目前登入的user資料 
+  //用於後續存在Post(example7)及Comment(example8)資料表的user(pointer)裡
   async getUserList() {
     let user = new Parse.Query(User);
-    // query.ascending("title");
     user.equalTo("objectId", this.currentUser.id)
     await user.first().then((result: any) => {
-      this.writer = result
-      console.log(this.writer)
+      this.userName = result
     })
   }
 
@@ -120,5 +123,40 @@ export class PostComponent implements OnInit {
           this.message_display[index] = true;
       }
     }
+  }
+
+  async setlike(item: any) {
+    this.like = !this.like;
+    let postId = await this.checkCommetHaveThisPost(item)
+    let comment = new Comment();
+    if (postId == '') {
+      comment.set('like', true);
+      comment.set('user', this.userName);
+      comment.set('post', item);
+      console.log(item);
+      await comment.save();
+    } else {
+      let comment_list = new Parse.Query(Comment);
+      comment = await comment_list.get(postId);
+      comment.set('like', !comment.attributes.like);
+      await comment.save();
+    }
+    let postList = await query.get(comment.get('post').id);
+    let postList_relation = postList.relation('comment');
+    postList_relation.add(comment);
+    postList.save();
+  }
+
+  async checkCommetHaveThisPost(item: any) {
+    let result_postId: string = '';
+    let comment_list = new Parse.Query(Comment);
+    comment_list.equalTo('post', item);
+    comment_list.equalTo('user', this.userName)
+    await comment_list.first().then((result: any) => {
+      if (result != undefined) {
+        result_postId = result.id;
+      }
+    })
+    return result_postId;
   }
 }
