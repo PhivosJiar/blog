@@ -209,4 +209,5 @@ export class PostComponent implements OnInit {
     this.isEditComment = false; 
     this.comment_display[index] = false;
   }
+  
 }
