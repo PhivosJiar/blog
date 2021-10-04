@@ -25,8 +25,4 @@ export class HomeComponent implements OnInit {
       this.route.navigate(['/login']);
   })
   }
-  // nbfocus(item :string){
-
-  // }
-  
 }
