@@ -12,8 +12,8 @@
 
             <div class="Rectangle">
                 <input class="Rectangle-Copy" [(ngModel)]="password">
+            <h3 class="err_code">{{errCode}}</h3>
             </div>
-
             <button class="submit" (click)="login()"><span class="login">登入</span></button>
             <p class="signup" routerLink="/signup"> 註冊 </p>
         </div>

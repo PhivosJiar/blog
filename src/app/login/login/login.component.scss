@@ -27,10 +27,10 @@
 }
 .Rectangle-Copy {
     text-indent : 2em;
-    width: 38.7vw;
     height: 9.6vh;
     border-radius: 8px;
     border: solid 1px #d8d8d8;
+    width: 38.7vw;
     background-color: #fff;
     font-family: NotoSansCJKtc;
     font-size: 28px;
@@ -96,15 +96,26 @@
 }
 
 .signup{
-        width: 56px;
-        height: 41px;
-        font-family: NotoSansCJKtc;
-        font-size: 28px;
-        font-weight: bold;
-        font-stretch: normal;
-        font-style: normal;
-        line-height: normal;
-        letter-spacing: normal;
-        text-align: center;
-        color: #00c390;
+    width: 56px;
+    height: 41px;
+    font-family: NotoSansCJKtc;
+    font-size: 28px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: center;
+    color: #00c390;
+}
+
+.err_code{
+    font-family: NotoSansCJKtc;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: right;
+    color: red;
 }

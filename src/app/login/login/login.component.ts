@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router }          from '@angular/router';
+import { Router } from '@angular/router';
 
 const Parse = require('parse');
 @Component({
@@ -8,9 +8,9 @@ const Parse = require('parse');
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  account:string='';
-  password:string='';
+  errCode: string = '';
+  account: string = '';
+  password: string = '';
   constructor(
     private route: Router,
   ) { }
@@ -20,19 +20,25 @@ export class LoginComponent implements OnInit {
     if (currentUser) {
       this.route.navigate(['/home']);
     } else {
-  
+
     }
   }
 
-  async login(){
-    if(this.account.trim()!='' && this.password.trim()!=''){
-    await Parse.User.logIn(this.account, this.password).then(() => {
-      console.log("success");
-      this.route.navigate(['/home']);
-    }, function (error:any) {
-      console.log("false");
-    });
-   }
+  async login() {
+    this.errCode = ''
+    if (this.account.trim() != '' && this.password.trim() != '') {
+      await Parse.User.logIn(this.account, this.password).then(() => {
+        console.log("success");
+        this.route.navigate(['/home']);
+      }, (error: any) => {
+        console.log(error)
+        if (error = 'Invalid username/password.') {
+          this.errCode = '帳號或密碼錯誤';
+        }
+      });
+    } else {
+      this.errCode = '帳號或密碼為空'
+    }
   }
 
 }
