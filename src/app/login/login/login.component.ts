@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  
+
   async login() {
     this.errCode = ''
     if (this.account.trim() != '' && this.password.trim() != '') {
