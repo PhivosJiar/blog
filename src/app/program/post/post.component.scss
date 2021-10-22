@@ -40,6 +40,10 @@
     height: 12vh;
     margin-top: 1vh;
 }
+.postgrid{
+
+}
+
 .chatbox{
     width: 20vw;
     border-style:solid;
@@ -95,7 +99,10 @@
     display: flex;
     flex-direction:column;
     width: auto;
-    height: auto;
+    height: 80vh;
+    overflow: auto;
+    padding: 0 2vw;
+    
 }
 
 .Path-Copy-2 {
@@ -213,4 +220,9 @@
     // line-height: 1.6;
     // letter-spacing: normal;
     // color: var(#323232); 
+}
+
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
 }
