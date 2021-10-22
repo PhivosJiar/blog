@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
           this.errCode = '帳號或密碼錯誤';
         }
       });
+      //123∂
     } else {
       this.errCode = '帳號或密碼為空'
     }
