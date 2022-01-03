@@ -93,6 +93,7 @@ export class PostComponent implements OnInit {
       });
       this.find();
     }
+    
   }
 
   //抓取目前登入的user資料 
